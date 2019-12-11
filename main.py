@@ -12,11 +12,9 @@ from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout, AverageP
 from keras.optimizers import Adam
 from keras.callbacks import TensorBoard
 from keras.utils.vis_utils import model_to_dot
-from IPython.display import SVG
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
 # json_file = open('model/model-2.json', 'r')
@@ -44,7 +42,7 @@ def predict(data):
    json_file.close()
    model = model_from_json(loaded_model_json)
    model.load_weights('model/model1-2.h5')
-   
+
    input_img = cv2.imread(data)
    input_img=cv2.cvtColor(input_img, cv2.COLOR_BGR2GRAY)
    input_img_resize=cv2.resize(input_img,(img_row,img_col))
