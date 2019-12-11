@@ -4,6 +4,7 @@ import os, cv2, sys
 # from keras.models import load_model, model_from_json
 import json
 from flask import Flask, render_template, request, url_for, redirect, flash, session
+from redis import Redis
 from werkzeug import secure_filename
 
 import keras
@@ -26,6 +27,8 @@ from sklearn.model_selection import train_test_split
 RESULT_FOLDER = os.path.join('static', 'result')
 ALLOWED_EXTENSIONS = set([ 'pdf'])
 app = Flask(__name__)
+redis = Redis(host='redis', port=6379)
+
 app.config['UPLOAD_FOLDER'] = RESULT_FOLDER
 app.secret_key = "random string"
 
