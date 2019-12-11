@@ -3,19 +3,36 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body style="padding: 20px;">
-            <div class="jumbotron jumbotron-fluid" style="background-color:lightskyblue; border-radius: 25px;">
+            <div class="jumbotron jumbotron-fluid" style="text-align: center;border-radius: 15px;">
+                <h3>Hasil Prediksi</h3>
+              </div>
                     <div class="container">
-                      <h4 class="display-4">Hasil Prediksi</h2>
-                      <img src="{{ result_image }}" alt="Image" style="max-width: 25%; border-radius: 10px ;">
+                      <div class="row">
+
+                      <div class="col-md">
+                      
+                      <img src="{{ result_image }}" alt="Image" style="max-width: 55%; border-radius: 10px ;">
                       <div>
-                        Diagnosa: {{diagnosa}}
+                        Diagnosa: <B>{{diagnosa}}</B>
                       </div>
                       <div>
-                        Confidence Level: {{confidence}}
+                        Confidence Level: <B>{{confidence}} %</B>
                       </div>
+                      <caption>*Semakin tinggi confidence level semakin tinggi kemungkinan tingkat akurasinya.</caption>
+                      <hr>
+                          <div class="btn-group" role="group" aria-label="Navigation" style="margin-top: 10px; align-self: center;">
+                              <a type="button" class="btn btn-secondary" href="{{url_for('home')}}" >Uji lagi</a>
+                              <a type="button" class="btn btn-secondary" href="https://github.com/agungperdananto/cnn-pneumonia/blob/master/pneumonia_CNN.ipynb" target="_blank">Model</a>
+                              <a type="button" class="btn btn-secondary" href="https://github.com/agungperdananto/cnn-pneumonia/tree/master/Data" target="_blank">Data</a>
+                            </div>
                     </div>
-                  </div>
-                  
-        
+                    <div class="col-md" style="text-align: center;">
+                      <h5> Model CNN yang digunakan</h5>
+                        <img src="/static/result/download.svg" alt="Image" style="max-width: 100%; border-radius: 10px ;">
+                    </div>
+                    </div>
+                    
+                  </div> 
+                
     </body>
 </html>

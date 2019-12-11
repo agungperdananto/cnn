@@ -58,9 +58,9 @@ def predict(data):
    y_pred = model.predict(x=image)
    cls_pred = np.argmax(y_pred,axis=1)
    if y_pred[0,0] > y_pred[0,1]:
-      confidence = round(y_pred[0,0], 2)
+      confidence = y_pred[0,0]
    else:
-      confidence = round(y_pred[0,1], 2)
+      confidence = y_pred[0,1]
    keras.backend.clear_session()
    print("diagnosa: ", labels[cls_pred[0]], "confidence: ", confidence)
    return labels[cls_pred[0]], confidence
@@ -120,7 +120,7 @@ def upload_file():
          flash(error)
          # return render_template('home.html')
          return redirect(url_for('home'))
-      return render_template('result.html', result_image = full_filename, diagnosa=diagnosa, confidence=confidence)
+      return render_template('result.html', result_image = full_filename, diagnosa=diagnosa, confidence=round(confidence *100,2))
       
 if __name__ == '__main__':
    app.run(debug=True, host='0.0.0.0')
